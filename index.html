@@ -92,11 +92,11 @@
     .button {
       background-color: white;
       color: #052147;
-      padding: 14px 28px;
+      padding: 16px 32px;
       border: none;
       border-radius: 12px;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 18px;
       cursor: pointer;
       margin-top: 20px;
       text-decoration: none;
@@ -127,13 +127,101 @@
       font-size: 14px;
       color: rgba(255,255,255,0.7);
     }
+    .lang-selector {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 999;
+    }
+    .lang-selector span {
+      margin: 0 6px;
+      cursor: pointer;
+      color: rgba(255,255,255,0.6);
+    }
+    .lang-selector .active {
+      font-weight: bold;
+      color: yellow;
+    }
+    @media (max-width: 600px) {
+      .lang-selector {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: #052147;
+        padding: 5px 10px;
+        border-radius: 6px;
+      }
+    }
   </style>
+  <script>
+    const translations = {
+      fr: {
+        heroTitle: "Investir dans l’avenir",
+        heroText: "Benmoussa Holding est un acteur stratégique dans divers secteurs économiques au Maroc et à l’international.",
+        aboutTitle: "À propos de nous",
+        aboutText: "Depuis sa création, Benmoussa Holding accompagne et investit dans des projets à forte valeur ajoutée, favorisant l’innovation, la durabilité et la croissance à long terme.",
+        contactTitle: "Contactez-nous",
+        contactText: "Pour toute demande, veuillez nous écrire.",
+        buttonText: "Envoyer un message",
+        sectorsTitle: "Nos secteurs d’activité"
+      },
+      en: {
+        heroTitle: "Investing in the Future",
+        heroText: "Benmoussa Holding is a strategic player in various economic sectors in Morocco and internationally.",
+        aboutTitle: "About Us",
+        aboutText: "Since its founding, Benmoussa Holding has supported and invested in high-value projects promoting innovation, sustainability, and long-term growth.",
+        contactTitle: "Contact Us",
+        contactText: "For any inquiries, please write to us.",
+        buttonText: "Send a message",
+        sectorsTitle: "Our Sectors"
+      },
+      ar: {
+        heroTitle: "الاستثمار في المستقبل",
+        heroText: "تُعد بنموسى القابضة فاعلًا استراتيجيًا في مختلف القطاعات الاقتصادية في المغرب وعلى الصعيد الدولي.",
+        aboutTitle: "من نحن",
+        aboutText: "منذ تأسيسها، تواكب بنموسى القابضة وتستثمر في مشاريع ذات قيمة مضافة عالية، تعزز الابتكار والاستدامة والنمو على المدى الطويل.",
+        contactTitle: "اتصل بنا",
+        contactText: "لأي استفسار، يرجى مراسلتنا.",
+        buttonText: "أرسل رسالة",
+        sectorsTitle: "قطاعاتنا"
+      }
+    };
+
+    function switchLang(lang) {
+      const t = translations[lang];
+      document.querySelector('.hero h2').innerText = t.heroTitle;
+      document.querySelector('.hero p').innerText = t.heroText;
+      document.querySelector('#about h3').innerText = t.aboutTitle;
+      document.querySelector('#about p').innerText = t.aboutText;
+      document.querySelector('#contact h3').innerText = t.contactTitle;
+      document.querySelector('#contact p').innerText = t.contactText;
+      document.querySelector('.button').innerText = t.buttonText;
+      document.querySelector('#sectors h3').innerText = t.sectorsTitle;
+      document.querySelectorAll('.lang-selector span').forEach(el => el.classList.remove('active'));
+      document.querySelector(`.lang-selector span[data-lang="${lang}"]`).classList.add('active');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.lang-selector span').forEach(el => {
+        el.addEventListener('click', () => {
+          const lang = el.getAttribute('data-lang');
+          switchLang(lang);
+        });
+      });
+      switchLang('fr');
+    });
+  </script>
 </head>
 <body>
+  <div class="lang-selector">
+    <span data-lang="fr">Français</span>
+    <span data-lang="en">English</span>
+    <span data-lang="ar">العربية</span>
+  </div>
   <header>
     <div style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto;">
       <div style="display: flex; align-items: center; gap: 12px;">
-        <img src="https://i.imgur.com/2AO8mfz.jpeg" alt="Logo Benmoussa Holding" style="height: 60px; object-fit: contain; padding: 4px 0;">
+        <img src="https://i.imgur.com/2AO8mfz.jpeg" alt="Logo Benmoussa Holding" style="height: 60px; object-fit: contain; display: block;">
         <span style="font-size: 24px; font-weight: bold;">Benmoussa Holding</span>
       </div>
       <nav>
