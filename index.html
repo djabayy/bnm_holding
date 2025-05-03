@@ -127,12 +127,14 @@
       font-size: 14px;
       color: rgba(255,255,255,0.7);
     }
+
+    /* Selection de langue fixée au-dessus de tout le contenu */
     .lang-container {
       position: fixed;
-      top: 0;
+      top: 10px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 999;
+      z-index: 9999; /* S'assurer qu'il soit toujours au-dessus */
       background-color: #052147;
       padding: 10px 20px;
       border-radius: 6px;
@@ -140,19 +142,23 @@
       gap: 12px;
       justify-content: center;
     }
+
     .lang-selector span {
       cursor: pointer;
       color: rgba(255,255,255,0.6);
     }
+
     .lang-selector .active {
       font-weight: bold;
       color: yellow;
     }
+
+    /* Réajustement pour mobile pour éviter les chevauchements */
     @media (max-width: 600px) {
       .lang-container {
-        position: fixed;
-        top: 10px;
-        left: 10px;
+        top: 10px; /* Positionnement en haut à gauche sur mobile */
+        left: 50%;
+        transform: translateX(-50%);
         background-color: #052147;
         padding: 5px 10px;
         border-radius: 6px;
@@ -169,7 +175,14 @@
         contactTitle: "Contactez-nous",
         contactText: "Pour toute demande, veuillez nous écrire.",
         buttonText: "Envoyer un message",
-        sectorsTitle: "Nos secteurs d’activité"
+        sectorsTitle: "Nos secteurs d’activité",
+        sectors: {
+          immobilier: "Immobilier",
+          finance: "Finance",
+          technologie: "Technologie",
+          automobile: "Automobile",
+          tourisme: "Tourisme"
+        }
       },
       en: {
         heroTitle: "Investing in the Future",
@@ -179,7 +192,14 @@
         contactTitle: "Contact Us",
         contactText: "For any inquiries, please write to us.",
         buttonText: "Send a message",
-        sectorsTitle: "Our Sectors"
+        sectorsTitle: "Our Sectors",
+        sectors: {
+          immobilier: "Real Estate",
+          finance: "Finance",
+          technologie: "Technology",
+          automobile: "Automobile",
+          tourisme: "Tourism"
+        }
       },
       ar: {
         heroTitle: "الاستثمار في المستقبل",
@@ -189,7 +209,14 @@
         contactTitle: "اتصل بنا",
         contactText: "لأي استفسار، يرجى مراسلتنا.",
         buttonText: "أرسل رسالة",
-        sectorsTitle: "قطاعاتنا"
+        sectorsTitle: "قطاعاتنا",
+        sectors: {
+          immobilier: "العقارات",
+          finance: "التمويل",
+          technologie: "التكنولوجيا",
+          automobile: "السيارات",
+          tourisme: "السياحة"
+        }
       }
     };
 
@@ -203,6 +230,14 @@
       document.querySelector('#contact p').innerText = t.contactText;
       document.querySelector('.button').innerText = t.buttonText;
       document.querySelector('#sectors h3').innerText = t.sectorsTitle;
+      
+      // Mise à jour des secteurs
+      document.querySelector('#sectors .sector-card:nth-child(1) h4').innerText = t.sectors.immobilier;
+      document.querySelector('#sectors .sector-card:nth-child(2) h4').innerText = t.sectors.finance;
+      document.querySelector('#sectors .sector-card:nth-child(3) h4').innerText = t.sectors.technologie;
+      document.querySelector('#sectors .sector-card:nth-child(4) h4').innerText = t.sectors.automobile;
+      document.querySelector('#sectors .sector-card:nth-child(5) h4').innerText = t.sectors.tourisme;
+      
       document.querySelectorAll('.lang-selector span').forEach(el => el.classList.remove('active'));
       document.querySelector(`.lang-selector span[data-lang="${lang}"]`).classList.add('active');
     }
