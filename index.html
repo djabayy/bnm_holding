@@ -12,22 +12,10 @@
       background-color: #052147;
       color: white;
     }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    header, footer {
       background-color: #052147;
       padding: 20px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    header img {
-      height: 50px;
-      width: auto;
-    }
-    header h1 {
-      color: white;
-      margin-left: 10px;
-      font-size: 24px;
     }
     nav a {
       color: rgba(255,255,255,0.9);
@@ -139,17 +127,20 @@
       font-size: 14px;
       color: rgba(255,255,255,0.7);
     }
-    .lang-selector {
+    .lang-container {
       position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 9999;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
       background-color: #052147;
-      padding: 5px 10px;
+      padding: 10px 20px;
       border-radius: 6px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
     }
     .lang-selector span {
-      margin: 0 6px;
       cursor: pointer;
       color: rgba(255,255,255,0.6);
     }
@@ -158,9 +149,13 @@
       color: yellow;
     }
     @media (max-width: 600px) {
-      .lang-selector {
+      .lang-container {
+        position: fixed;
         top: 10px;
-        right: 10px;
+        left: 10px;
+        background-color: #052147;
+        padding: 5px 10px;
+        border-radius: 6px;
       }
     }
   </style>
@@ -174,19 +169,7 @@
         contactTitle: "Contactez-nous",
         contactText: "Pour toute demande, veuillez nous écrire.",
         buttonText: "Envoyer un message",
-        sectorsTitle: "Nos secteurs d’activité",
-        sectors: {
-          immobilier: "Immobilier",
-          immobilierDescription: "Développement de projets immobiliers innovants et durables.",
-          finance: "Finance",
-          financeDescription: "Participation dans des institutions financières et startups prometteuses.",
-          technologie: "Technologie",
-          technologieDescription: "Investissement dans les nouvelles technologies et le digital.",
-          automobile: "Automobile",
-          automobileDescription: "Engagement dans la distribution, la maintenance et les services liés à l’industrie automobile.",
-          tourisme: "Tourisme",
-          tourismeDescription: "Développement et gestion de projets touristiques favorisant l’attractivité et la durabilité."
-        }
+        sectorsTitle: "Nos secteurs d’activité"
       },
       en: {
         heroTitle: "Investing in the Future",
@@ -196,19 +179,7 @@
         contactTitle: "Contact Us",
         contactText: "For any inquiries, please write to us.",
         buttonText: "Send a message",
-        sectorsTitle: "Our Sectors",
-        sectors: {
-          immobilier: "Real Estate",
-          immobilierDescription: "Development of innovative and sustainable real estate projects.",
-          finance: "Finance",
-          financeDescription: "Participation in financial institutions and promising startups.",
-          technologie: "Technology",
-          technologieDescription: "Investment in new technologies and digital.",
-          automobile: "Automobile",
-          automobileDescription: "Engagement in the distribution, maintenance, and services related to the automotive industry.",
-          tourisme: "Tourism",
-          tourismeDescription: "Development and management of tourism projects promoting attractiveness and sustainability."
-        }
+        sectorsTitle: "Our Sectors"
       },
       ar: {
         heroTitle: "الاستثمار في المستقبل",
@@ -218,19 +189,7 @@
         contactTitle: "اتصل بنا",
         contactText: "لأي استفسار، يرجى مراسلتنا.",
         buttonText: "أرسل رسالة",
-        sectorsTitle: "قطاعاتنا",
-        sectors: {
-          immobilier: "العقارات",
-          immobilierDescription: "تطوير مشاريع عقارية مبتكرة ومستدامة.",
-          finance: "التمويل",
-          financeDescription: "المشاركة في المؤسسات المالية والشركات الناشئة الواعدة.",
-          technologie: "التكنولوجيا",
-          technologieDescription: "الاستثمار في التقنيات الجديدة والرقمية.",
-          automobile: "السيارات",
-          automobileDescription: "الانخراط في توزيع وصيانة وخدمات الصناعة السيارات.",
-          tourisme: "السياحة",
-          tourismeDescription: "تطوير وإدارة مشاريع سياحية تعزز الجذب والاستدامة."
-        }
+        sectorsTitle: "قطاعاتنا"
       }
     };
 
@@ -244,22 +203,6 @@
       document.querySelector('#contact p').innerText = t.contactText;
       document.querySelector('.button').innerText = t.buttonText;
       document.querySelector('#sectors h3').innerText = t.sectorsTitle;
-
-      document.querySelector('#sectors .sector-card:nth-child(1) h4').innerText = t.sectors.immobilier;
-      document.querySelector('#sectors .sector-card:nth-child(1) p').innerText = t.sectors.immobilierDescription;
-
-      document.querySelector('#sectors .sector-card:nth-child(2) h4').innerText = t.sectors.finance;
-      document.querySelector('#sectors .sector-card:nth-child(2) p').innerText = t.sectors.financeDescription;
-
-      document.querySelector('#sectors .sector-card:nth-child(3) h4').innerText = t.sectors.technologie;
-      document.querySelector('#sectors .sector-card:nth-child(3) p').innerText = t.sectors.technologieDescription;
-
-      document.querySelector('#sectors .sector-card:nth-child(4) h4').innerText = t.sectors.automobile;
-      document.querySelector('#sectors .sector-card:nth-child(4) p').innerText = t.sectors.automobileDescription;
-
-      document.querySelector('#sectors .sector-card:nth-child(5) h4').innerText = t.sectors.tourisme;
-      document.querySelector('#sectors .sector-card:nth-child(5) p').innerText = t.sectors.tourismeDescription;
-      
       document.querySelectorAll('.lang-selector span').forEach(el => el.classList.remove('active'));
       document.querySelector(`.lang-selector span[data-lang="${lang}"]`).classList.add('active');
     }
@@ -276,29 +219,39 @@
   </script>
 </head>
 <body>
-  <header>
-    <img src="https://i.imgur.com/yw5xhfC.jpeg" alt="Logo" />
-    <h1>Benmoussa Holding</h1>
-  </header>
-
-  <div class="lang-selector">
-    <span data-lang="fr" class="active">Français</span>
-    <span data-lang="en">English</span>
-    <span data-lang="ar">العربية</span>
+  <div class="lang-container">
+    <div class="lang-selector">
+      <span data-lang="fr" class="active">Français</span>
+      <span data-lang="en">English</span>
+      <span data-lang="ar">العربية</span>
+    </div>
   </div>
+  <header>
+    <div style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <img src="https://i.imgur.com/yw5xhfC.jpeg" alt="Logo Benmoussa Holding" style="height: 60px; object-fit: contain; display: block;">
+        <span style="font-size: 24px; font-weight: bold;">Benmoussa Holding</span>
+      </div>
+      <nav>
+        <a href="#about">À propos</a>
+        <a href="#sectors">Secteurs</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
   <section class="hero">
     <h2>Investir dans l’avenir</h2>
     <p>Benmoussa Holding est un acteur stratégique dans divers secteurs économiques au Maroc et à l’international.</p>
   </section>
 
-  <section class="about" id="about">
+  <section id="about" class="about">
     <h3>À propos de nous</h3>
     <p>Depuis sa création, Benmoussa Holding accompagne et investit dans des projets à forte valeur ajoutée, favorisant l’innovation, la durabilité et la croissance à long terme.</p>
   </section>
 
-  <section class="sectors" id="sectors">
-    <h3>Nos secteurs d’activité</h3>
+  <section id="sectors" class="sectors">
+    <h3 style="font-size:36px;">Nos secteurs d’activité</h3>
     <div class="sector-card">
       <h4>Immobilier</h4>
       <p>Développement de projets immobiliers innovants et durables.</p>
@@ -321,14 +274,14 @@
     </div>
   </section>
 
-  <section class="contact" id="contact">
-    <h3>Contactez-nous</h3>
+  <section id="contact" class="contact">
+    <h3 style="font-size:32px;">Contactez-nous</h3>
     <p>Pour toute demande, veuillez nous écrire.</p>
-    <button class="button">Envoyer un message</button>
+    <a href="mailto:contact@benmoussa-holding.com" class="button">Envoyer un message</a>
   </section>
-  
+
   <footer>
-    <p>&copy; 2025 Benmoussa Holding. Tous droits réservés.</p>
+    &copy; <script>document.write(new Date().getFullYear())</script> Benmoussa Holding. Tous droits réservés.
   </footer>
 </body>
 </html>
