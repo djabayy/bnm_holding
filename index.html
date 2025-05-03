@@ -127,38 +127,26 @@
       font-size: 14px;
       color: rgba(255,255,255,0.7);
     }
-
-    /* Selection de langue fixée au-dessus de tout le contenu */
-    .lang-container {
-      position: fixed;
+    .lang-selector {
+      position: absolute;
       top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 9999; /* S'assurer qu'il soit toujours au-dessus */
-      background-color: #052147;
-      padding: 10px 20px;
-      border-radius: 6px;
-      display: flex;
-      gap: 12px;
-      justify-content: center;
+      right: 10px;
+      z-index: 999;
     }
-
     .lang-selector span {
+      margin: 0 6px;
       cursor: pointer;
       color: rgba(255,255,255,0.6);
     }
-
     .lang-selector .active {
       font-weight: bold;
       color: yellow;
     }
-
-    /* Réajustement pour mobile pour éviter les chevauchements */
     @media (max-width: 600px) {
-      .lang-container {
-        top: 10px; /* Positionnement en haut à gauche sur mobile */
-        left: 50%;
-        transform: translateX(-50%);
+      .lang-selector {
+        position: fixed;
+        top: 10px;
+        right: 10px;
         background-color: #052147;
         padding: 5px 10px;
         border-radius: 6px;
@@ -178,10 +166,15 @@
         sectorsTitle: "Nos secteurs d’activité",
         sectors: {
           immobilier: "Immobilier",
+          immobilierDescription: "Développement de projets immobiliers innovants et durables.",
           finance: "Finance",
+          financeDescription: "Participation dans des institutions financières et startups prometteuses.",
           technologie: "Technologie",
+          technologieDescription: "Investissement dans les nouvelles technologies et le digital.",
           automobile: "Automobile",
-          tourisme: "Tourisme"
+          automobileDescription: "Engagement dans la distribution, la maintenance et les services liés à l’industrie automobile.",
+          tourisme: "Tourisme",
+          tourismeDescription: "Développement et gestion de projets touristiques favorisant l’attractivité et la durabilité."
         }
       },
       en: {
@@ -195,10 +188,15 @@
         sectorsTitle: "Our Sectors",
         sectors: {
           immobilier: "Real Estate",
+          immobilierDescription: "Development of innovative and sustainable real estate projects.",
           finance: "Finance",
+          financeDescription: "Participation in financial institutions and promising startups.",
           technologie: "Technology",
+          technologieDescription: "Investment in new technologies and digital.",
           automobile: "Automobile",
-          tourisme: "Tourism"
+          automobileDescription: "Engagement in the distribution, maintenance, and services related to the automotive industry.",
+          tourisme: "Tourism",
+          tourismeDescription: "Development and management of tourism projects promoting attractiveness and sustainability."
         }
       },
       ar: {
@@ -212,10 +210,15 @@
         sectorsTitle: "قطاعاتنا",
         sectors: {
           immobilier: "العقارات",
+          immobilierDescription: "تطوير مشاريع عقارية مبتكرة ومستدامة.",
           finance: "التمويل",
+          financeDescription: "المشاركة في المؤسسات المالية والشركات الناشئة الواعدة.",
           technologie: "التكنولوجيا",
+          technologieDescription: "الاستثمار في التقنيات الجديدة والرقمية.",
           automobile: "السيارات",
-          tourisme: "السياحة"
+          automobileDescription: "الانخراط في توزيع وصيانة وخدمات الصناعة السيارات.",
+          tourisme: "السياحة",
+          tourismeDescription: "تطوير وإدارة مشاريع سياحية تعزز الجذب والاستدامة."
         }
       }
     };
@@ -230,93 +233,5 @@
       document.querySelector('#contact p').innerText = t.contactText;
       document.querySelector('.button').innerText = t.buttonText;
       document.querySelector('#sectors h3').innerText = t.sectorsTitle;
-      
-      // Mise à jour des secteurs
-      document.querySelector('#sectors .sector-card:nth-child(1) h4').innerText = t.sectors.immobilier;
-      document.querySelector('#sectors .sector-card:nth-child(2) h4').innerText = t.sectors.finance;
-      document.querySelector('#sectors .sector-card:nth-child(3) h4').innerText = t.sectors.technologie;
-      document.querySelector('#sectors .sector-card:nth-child(4) h4').innerText = t.sectors.automobile;
-      document.querySelector('#sectors .sector-card:nth-child(5) h4').innerText = t.sectors.tourisme;
-      
-      document.querySelectorAll('.lang-selector span').forEach(el => el.classList.remove('active'));
-      document.querySelector(`.lang-selector span[data-lang="${lang}"]`).classList.add('active');
-    }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.lang-selector span').forEach(el => {
-        el.addEventListener('click', () => {
-          const lang = el.getAttribute('data-lang');
-          switchLang(lang);
-        });
-      });
-      switchLang('fr');
-    });
-  </script>
-</head>
-<body>
-  <div class="lang-container">
-    <div class="lang-selector">
-      <span data-lang="fr" class="active">Français</span>
-      <span data-lang="en">English</span>
-      <span data-lang="ar">العربية</span>
-    </div>
-  </div>
-  <header>
-    <div style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto;">
-      <div style="display: flex; align-items: center; gap: 12px;">
-        <img src="https://i.imgur.com/2AO8mfz.jpeg" alt="Logo Benmoussa Holding" style="height: 60px; object-fit: contain; display: block;">
-        <span style="font-size: 24px; font-weight: bold;">Benmoussa Holding</span>
-      </div>
-      <nav>
-        <a href="#about">À propos</a>
-        <a href="#sectors">Secteurs</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <section class="hero">
-    <h2>Investir dans l’avenir</h2>
-    <p>Benmoussa Holding est un acteur stratégique dans divers secteurs économiques au Maroc et à l’international.</p>
-  </section>
-
-  <section id="about" class="about">
-    <h3>À propos de nous</h3>
-    <p>Depuis sa création, Benmoussa Holding accompagne et investit dans des projets à forte valeur ajoutée, favorisant l’innovation, la durabilité et la croissance à long terme.</p>
-  </section>
-
-  <section id="sectors" class="sectors">
-    <h3 style="font-size:36px;">Nos secteurs d’activité</h3>
-    <div class="sector-card">
-      <h4>Immobilier</h4>
-      <p>Développement de projets immobiliers innovants et durables.</p>
-    </div>
-    <div class="sector-card">
-      <h4>Finance</h4>
-      <p>Participation dans des institutions financières et startups prometteuses.</p>
-    </div>
-    <div class="sector-card">
-      <h4>Technologie</h4>
-      <p>Investissement dans les nouvelles technologies et le digital.</p>
-    </div>
-    <div class="sector-card">
-      <h4>Automobile</h4>
-      <p>Engagement dans la distribution, la maintenance et les services liés à l’industrie automobile.</p>
-    </div>
-    <div class="sector-card">
-      <h4>Tourisme</h4>
-      <p>Développement et gestion de projets touristiques favorisant l’attractivité et la durabilité.</p>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <h3 style="font-size:32px;">Contactez-nous</h3>
-    <p>Pour toute demande, veuillez nous écrire.</p>
-    <a href="mailto:contact@benmoussa-holding.com" class="button">Envoyer un message</a>
-  </section>
-
-  <footer>
-    &copy; <script>document.write(new Date().getFullYear())</script> Benmoussa Holding. Tous droits réservés.
-  </footer>
-</body>
-</html>
+      document.querySelector('#sectors .sector
