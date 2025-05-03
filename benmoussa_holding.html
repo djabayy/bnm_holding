@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benmoussa Holding</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #052147;
+      color: white;
+    }
+    header {
+      background-color: #052147;
+      padding: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+    header img {
+      height: 40px;
+      margin-right: 20px;
+    }
+    nav a {
+      color: rgba(255,255,255,0.9);
+      margin: 0 15px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      color: white;
+    }
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #052147;
+      padding: 10px;
+      border-radius: 12px;
+      color: white;
+      cursor: pointer;
+    }
+    .language-switch a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: white;
+    }
+    .language-switch a.selected {
+      font-weight: bold;
+      color: #ffd700;
+    }
+    .hero {
+      padding: 100px 20px;
+      text-align: center;
+      background: linear-gradient(145deg, #052147 0%, #0a2c5c 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 70%);
+      z-index: 0;
+    }
+    .hero h2 {
+      font-size: 48px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.8);
+      position: relative;
+      z-index: 1;
+    }
+    .about {
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(160deg, #052147 0%, #0e335e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .about::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top right, rgba(255,255,255,0.03), transparent 60%);
+      z-index: 0;
+    }
+    .about h3, .about p {
+      position: relative;
+      z-index: 1;
+    }
+    .about h3 {
+      font-size: 32px;
+    }
+    .about p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.8);
+    }
+    .contact {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .contact p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.8);
+    }
+    .button {
+      background-color: white;
+      color: #052147;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .button:hover {
+      background-color: #e6e6e6;
+    }
+    .sectors {
+      background-color: white;
+      color: #052147;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .sector-card {
+      display: inline-block;
+      width: 280px;
+      margin: 20px;
+      background-color: #f9f9f9;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    footer {
+      background-color: #041a37;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+  </style>
+</head>
+<body>
+  <!-- Language Switcher Menu -->
+  <div class="language-switch">
+    <a href="#" class="selected" id="lang-fr" onclick="changeLanguage('fr')">Français</a>
+    <a href="#" id="lang-en" onclick="changeLanguage('en')">English</a>
+    <a href="#" id="lang-ar" onclick="changeLanguage('ar')">العربية</a>
+  </div>
+
+  <header>
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <!-- Logo -->
+      <img src="https://i.imgur.com/2AO8mfz.jpeg" alt="Benmoussa Holding Logo" />
+      <h1 id="header-title">Benmoussa Holding</h1>
+      <nav>
+        <a href="#about" id="nav-about">À propos</a>
+        <a href="#sectors" id="nav-sectors">Secteurs</a>
+        <a href="#contact" id="nav-contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h2 id="hero-title">Investir dans l’avenir</h2>
+    <p id="hero-description">Benmoussa Holding est un acteur stratégique dans divers secteurs économiques au Maroc et à l’international.</p>
+  </section>
+
+  <section id="about" class="about">
+    <h3 id="about-title">À propos de nous</h3>
+    <p id="about-description">Depuis sa création, Benmoussa Holding accompagne et investit dans des projets à forte valeur ajoutée, favorisant l’innovation, la durabilité et la croissance à long terme.</p>
+  </section>
+
+  <section id="sectors" class="sectors">
+    <h3 style="font-size:36px;" id="sectors-title">Nos secteurs d’activité</h3>
+    <div class="sector-card">
+      <h4 id="sector-real-estate">Immobilier</h4>
+      <p id="sector-real-estate-description">Développement de projets immobiliers innovants et durables.</p>
+    </div>
+    <div class="sector-card">
+      <h4 id="sector-finance">Finance</h4>
+      <p id="sector-finance-description">Participation dans des institutions financières et startups prometteuses.</p>
+    </div>
+    <div class="sector-card">
+      <h4 id="sector-technology">Technologie</h4>
+      <p id="sector-technology-description">Investissement dans les nouvelles technologies et le digital.</p>
+    </div>
+    <div class="sector-card">
+      <h4 id="sector-automobile">Automobile</h4>
+      <p id="sector-automobile-description">Engagement dans la distribution, la maintenance et les services liés à l’industrie automobile.</p>
+    </div>
+    <div class="sector-card">
+      <h4 id="sector-tourism">Tourisme</h4>
+      <p id="sector-tourism-description">Développement et gestion de projets touristiques favorisant l’attractivité et la durabilité.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h3 id="contact-title" style="font-size:32px;">Contactez-nous</h3>
+    <p id="contact-description">Pour toute demande, veuillez nous écrire.</p>
+    <a href="mailto:contact@benmoussa-holding.com" class="button">Envoyer un message</a>
+  </section>
+
+  <footer>
+    &copy; <script>document.write(new Date().getFullYear())</script> Benmoussa Holding. Tous droits réservés.
+  </footer>
+
+  <script>
+    let currentLanguage = 'fr'; // Default language
+
+    function changeLanguage(lang) {
+      currentLanguage = lang;
+
+      // Update the selected language in the menu
+      document.querySelectorAll('.language-switch a').forEach((link) => {
+        link.classList.remove('selected');
+      });
+      document.getElementById(`lang-${lang}`).classList.add('selected');
+
+      // Change content based on the selected language
+      if (lang === 'fr') {
+        document.documentElement.lang = 'fr';
+        document.getElementById('header-title').innerText = 'Benmoussa Holding';
+        document.getElementById('nav-about').innerText = 'À propos';
+        document.getElementById('nav-sectors').innerText = 'Secteurs';
+        document.getElementById('nav-contact').innerText = 'Contact';
+        document.getElementById('hero-title').innerText = 'Investir dans l’avenir';
+        document.getElementById('hero-description').innerText = 'Benmoussa Holding est un acteur stratégique dans divers secteurs économiques au Maroc et à l’international.';
+        document.getElementById('about-title').innerText = 'À propos de nous';
+        document.getElementById('about-description').innerText = 'Depuis sa création, Benmoussa Holding accompagne et investit dans des projets à forte valeur ajoutée, favorisant l’innovation, la durabilité et la croissance à long terme.';
+        document.getElementById('sectors-title').innerText = 'Nos secteurs d’activité';
+        document.getElementById('sector-real-estate').innerText = 'Immobilier';
+        document.getElementById('sector-real-estate-description').innerText = 'Développement de projets immobiliers innovants et durables.';
+        document.getElementById('sector-finance').innerText = 'Finance';
+        document.getElementById('sector-finance-description').innerText = 'Participation dans des institutions financières et startups prometteuses.';
+        document.getElementById('sector-technology').innerText = 'Technologie';
+        document.getElementById('sector-technology-description').innerText = 'Investissement dans les nouvelles technologies et le digital.';
+        document.getElementById('sector-automobile').innerText = 'Automobile';
+        document.getElementById('sector-automobile-description').innerText = 'Engagement dans la distribution, la maintenance et les services liés à l’industrie automobile.';
+        document.getElementById('sector-tourism').innerText = 'Tourisme';
+        document.getElementById('sector-tourism-description').innerText = 'Développement et gestion de projets touristiques favorisant l’attractivité et la durabilité.';
+        document.getElementById('contact-title').innerText = 'Contactez-nous';
+        document.getElementById('contact-description').innerText = 'Pour toute demande, veuillez nous écrire.';
+      }
+      else if (lang === 'en') {
+        document.documentElement.lang = 'en';
+        document.getElementById('header-title').innerText = 'Benmoussa Holding';
+        document.getElementById('nav-about').innerText = 'About Us';
+        document.getElementById('nav-sectors').innerText = 'Sectors';
+        document.getElementById('nav-contact').innerText = 'Contact';
+        document.getElementById('hero-title').innerText = 'Investing in the Future';
+        document.getElementById('hero-description').innerText = 'Benmoussa Holding is a strategic player in various economic sectors in Morocco and internationally.';
+        document.getElementById('about-title').innerText = 'About Us';
+        document.getElementById('about-description').innerText = 'Since its creation, Benmoussa Holding has been supporting and investing in high-value-added projects, fostering innovation, sustainability, and long-term growth.';
+        document.getElementById('sectors-title').innerText = 'Our Sectors of Activity';
+        document.getElementById('sector-real-estate').innerText = 'Real Estate';
+        document.getElementById('sector-real-estate-description').innerText = 'Development of innovative and sustainable real estate projects.';
+        document.getElementById('sector-finance').innerText = 'Finance';
+        document.getElementById('sector-finance-description').innerText = 'Participation in financial institutions and promising startups.';
+        document.getElementById('sector-technology').innerText = 'Technology';
+        document.getElementById('sector-technology-description').innerText = 'Investment in new technologies and digital.';
+        document.getElementById('sector-automobile').innerText = 'Automobile';
+        document.getElementById('sector-automobile-description').innerText = 'Engagement in the distribution, maintenance, and services related to the automotive industry.';
+        document.getElementById('sector-tourism').innerText = 'Tourism';
+        document.getElementById('sector-tourism-description').innerText = 'Development and management of tourism projects promoting attractiveness and sustainability.';
+        document.getElementById('contact-title').innerText = 'Contact Us';
+        document.getElementById('contact-description').innerText = 'For any request, please write to us.';
+      }
+      else if (lang === 'ar') {
+        document.documentElement.lang = 'ar';
+        document.getElementById('header-title').innerText = 'بنموسى القابضة';
+        document.getElementById('nav-about').innerText = 'عن الشركة';
+        document.getElementById('nav-sectors').innerText = 'القطاعات';
+        document.getElementById('nav-contact').innerText = 'اتصل بنا';
+        document.getElementById('hero-title').innerText = 'الاستثمار في المستقبل';
+        document.getElementById('hero-description').innerText = 'بنموسى القابضة هي لاعب استراتيجي في العديد من القطاعات الاقتصادية في المغرب والدولية.';
+        document.getElementById('about-title').innerText = 'عن الشركة';
+        document.getElementById('about-description').innerText = 'منذ تأسيسها، تدعم بنموسى القابضة وتستثمر في المشاريع ذات القيمة المضافة العالية، وتعزز الابتكار والاستدامة والنمو على المدى الطويل.';
+        document.getElementById('sectors-title').innerText = 'قطاعاتنا';
+        document.getElementById('sector-real-estate').innerText = 'العقارات';
+        document.getElementById('sector-real-estate-description').innerText = 'تطوير مشاريع عقارية مبتكرة ومستدامة.';
+        document.getElementById('sector-finance').innerText = 'المالية';
+        document.getElementById('sector-finance-description').innerText = 'المشاركة في المؤسسات المالية والشركات الناشئة الواعدة.';
+        document.getElementById('sector-technology').innerText = 'التكنولوجيا';
+        document.getElementById('sector-technology-description').innerText = 'استثمار في التقنيات الحديثة والعالم الرقمي.';
+        document.getElementById('sector-automobile').innerText = 'السيارات';
+        document.getElementById('sector-automobile-description').innerText = 'الانخراط في توزيع وصيانة وخدمات صناعة السيارات.';
+        document.getElementById('sector-tourism').innerText = 'السياحة';
+        document.getElementById('sector-tourism-description').innerText = 'تطوير وإدارة مشاريع سياحية تعزز الجاذبية والاستدامة.';
+        document.getElementById('contact-title').innerText = 'اتصل بنا';
+        document.getElementById('contact-description').innerText = 'لأي استفسار، يرجى مراسلتنا.';
+      }
+    }
+  </script>
+</body>
+</html>
