@@ -234,4 +234,67 @@
       document.querySelector('.button').innerText = t.buttonText;
       document.querySelector('#sectors h3').innerText = t.sectorsTitle;
 
-      document.querySelector('#sectors .sector
+      document.querySelector('#sectors .sector-card:nth-child(1) h4').innerText = t.sectors.immobilier;
+      document.querySelector('#sectors .sector-card:nth-child(1) p').innerText = t.sectors.immobilierDescription;
+
+      document.querySelector('#sectors .sector-card:nth-child(2) h4').innerText = t.sectors.finance;
+      document.querySelector('#sectors .sector-card:nth-child(2) p').innerText = t.sectors.financeDescription;
+
+      document.querySelector('#sectors .sector-card:nth-child(3) h4').innerText = t.sectors.technologie;
+      document.querySelector('#sectors .sector-card:nth-child(3) p').innerText = t.sectors.technologieDescription;
+
+      document.querySelector('#sectors .sector-card:nth-child(4) h4').innerText = t.sectors.automobile;
+      document.querySelector('#sectors .sector-card:nth-child(4) p').innerText = t.sectors.automobileDescription;
+
+      document.querySelector('#sectors .sector-card:nth-child(5) h4').innerText = t.sectors.tourisme;
+      document.querySelector('#sectors .sector-card:nth-child(5) p').innerText = t.sectors.tourismeDescription;
+      
+      document.querySelectorAll('.lang-selector span').forEach(el => el.classList.remove('active'));
+      document.querySelector(`.lang-selector span[data-lang="${lang}"]`).classList.add('active');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.lang-selector span').forEach(el => {
+        el.addEventListener('click', () => {
+          const lang = el.getAttribute('data-lang');
+          switchLang(lang);
+        });
+      });
+      switchLang('fr');
+    });
+  </script>
+</head>
+<body>
+  <div class="lang-container">
+    <div class="lang-selector">
+      <span data-lang="fr" class="active">Français</span>
+      <span data-lang="en">English</span>
+      <span data-lang="ar">العربية</span>
+    </div>
+  </div>
+
+  <section id="sectors" class="sectors">
+    <h3 style="font-size:36px;">Nos secteurs d’activité</h3>
+    <div class="sector-card">
+      <h4>Immobilier</h4>
+      <p>Développement de projets immobiliers innovants et durables.</p>
+    </div>
+    <div class="sector-card">
+      <h4>Finance</h4>
+      <p>Participation dans des institutions financières et startups prometteuses.</p>
+    </div>
+    <div class="sector-card">
+      <h4>Technologie</h4>
+      <p>Investissement dans les nouvelles technologies et le digital.</p>
+    </div>
+    <div class="sector-card">
+      <h4>Automobile</h4>
+      <p>Engagement dans la distribution, la maintenance et les services liés à l’industrie automobile.</p>
+    </div>
+    <div class="sector-card">
+      <h4>Tourisme</h4>
+      <p>Développement et gestion de projets touristiques favorisant l’attractivité et la durabilité.</p>
+    </div>
+  </section>
+</body>
+</html>
