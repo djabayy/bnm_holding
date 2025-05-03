@@ -12,10 +12,22 @@
       background-color: #052147;
       color: white;
     }
-    header, footer {
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       background-color: #052147;
       padding: 20px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    header img {
+      height: 50px;
+      width: auto;
+    }
+    header h1 {
+      color: white;
+      margin-left: 10px;
+      font-size: 24px;
     }
     nav a {
       color: rgba(255,255,255,0.9);
@@ -264,6 +276,11 @@
   </script>
 </head>
 <body>
+  <header>
+    <img src="https://i.imgur.com/2AO8mfz.jpeg" alt="Logo" />
+    <h1>Benmoussa Holding</h1>
+  </header>
+
   <div class="lang-selector">
     <span data-lang="fr" class="active">Français</span>
     <span data-lang="en">English</span>
