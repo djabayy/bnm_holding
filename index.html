@@ -128,10 +128,13 @@
       color: rgba(255,255,255,0.7);
     }
     .lang-selector {
-      position: absolute;
+      position: fixed;
       top: 10px;
       right: 10px;
-      z-index: 999;
+      z-index: 9999;
+      background-color: #052147;
+      padding: 5px 10px;
+      border-radius: 6px;
     }
     .lang-selector span {
       margin: 0 6px;
@@ -144,12 +147,8 @@
     }
     @media (max-width: 600px) {
       .lang-selector {
-        position: fixed;
         top: 10px;
         right: 10px;
-        background-color: #052147;
-        padding: 5px 10px;
-        border-radius: 6px;
       }
     }
   </style>
@@ -265,16 +264,24 @@
   </script>
 </head>
 <body>
-  <div class="lang-container">
-    <div class="lang-selector">
-      <span data-lang="fr" class="active">Français</span>
-      <span data-lang="en">English</span>
-      <span data-lang="ar">العربية</span>
-    </div>
+  <div class="lang-selector">
+    <span data-lang="fr" class="active">Français</span>
+    <span data-lang="en">English</span>
+    <span data-lang="ar">العربية</span>
   </div>
 
-  <section id="sectors" class="sectors">
-    <h3 style="font-size:36px;">Nos secteurs d’activité</h3>
+  <section class="hero">
+    <h2>Investir dans l’avenir</h2>
+    <p>Benmoussa Holding est un acteur stratégique dans divers secteurs économiques au Maroc et à l’international.</p>
+  </section>
+
+  <section class="about" id="about">
+    <h3>À propos de nous</h3>
+    <p>Depuis sa création, Benmoussa Holding accompagne et investit dans des projets à forte valeur ajoutée, favorisant l’innovation, la durabilité et la croissance à long terme.</p>
+  </section>
+
+  <section class="sectors" id="sectors">
+    <h3>Nos secteurs d’activité</h3>
     <div class="sector-card">
       <h4>Immobilier</h4>
       <p>Développement de projets immobiliers innovants et durables.</p>
@@ -296,5 +303,15 @@
       <p>Développement et gestion de projets touristiques favorisant l’attractivité et la durabilité.</p>
     </div>
   </section>
+
+  <section class="contact" id="contact">
+    <h3>Contactez-nous</h3>
+    <p>Pour toute demande, veuillez nous écrire.</p>
+    <button class="button">Envoyer un message</button>
+  </section>
+  
+  <footer>
+    <p>&copy; 2025 Benmoussa Holding. Tous droits réservés.</p>
+  </footer>
 </body>
 </html>
