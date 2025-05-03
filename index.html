@@ -127,20 +127,14 @@
       font-size: 14px;
       color: rgba(255,255,255,0.7);
     }
-    .lang-container {
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
+    .lang-selector {
+      position: absolute;
+      top: 10px;
+      right: 10px;
       z-index: 999;
-      background-color: #052147;
-      padding: 10px 20px;
-      border-radius: 6px;
-      display: flex;
-      gap: 12px;
-      justify-content: center;
     }
     .lang-selector span {
+      margin: 0 6px;
       cursor: pointer;
       color: rgba(255,255,255,0.6);
     }
@@ -149,10 +143,10 @@
       color: yellow;
     }
     @media (max-width: 600px) {
-      .lang-container {
+      .lang-selector {
         position: fixed;
         top: 10px;
-        left: 10px;
+        right: 10px;
         background-color: #052147;
         padding: 5px 10px;
         border-radius: 6px;
@@ -219,12 +213,10 @@
   </script>
 </head>
 <body>
-  <div class="lang-container">
-    <div class="lang-selector">
-      <span data-lang="fr" class="active">Français</span>
-      <span data-lang="en">English</span>
-      <span data-lang="ar">العربية</span>
-    </div>
+  <div class="lang-selector">
+    <span data-lang="fr" class="active">Français</span>
+    <span data-lang="en">English</span>
+    <span data-lang="ar">العربية</span>
   </div>
   <header>
     <div style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto;">
