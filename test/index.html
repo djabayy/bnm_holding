@@ -266,14 +266,31 @@
     </div>
   </section>
 
+  <!--<section id="contact" class="contact">
+  --  <h3 style="font-size:32px;">Contactez-nous</h3>
+  --  <p>Pour toute demande, veuillez nous écrire.</p>
+  --  <a href="mailto:contact@benmoussa-holding.com" class="button">Envoyer un message</a>
+  --</section>-->
+
   <section id="contact" class="contact">
     <h3 style="font-size:32px;">Contactez-nous</h3>
     <p>Pour toute demande, veuillez nous écrire.</p>
-    <a href="mailto:contact@benmoussa-holding.com" class="button">Envoyer un message</a>
+    <button onclick="showZohoForm()" class="button">Envoyer un message</button>
+  
+    <div id="zohoFormContainer" style="display: none; margin-top: 30px;">
+      <iframe src="https://form.zoho.com/ton-lien-iframe" width="100%" height="800" frameborder="0" style="border: none;"></iframe>
+    </div>
   </section>
 
   <footer>
     &copy; <script>document.write(new Date().getFullYear())</script> Benmoussa Holding. Tous droits réservés.
   </footer>
+
+  <script>
+    function showZohoForm() {
+      document.getElementById("zohoFormContainer").style.display = "block";
+      window.location.hash = "#zohoFormContainer"; // fait défiler jusqu'au formulaire
+    }
+  </script>
 </body>
 </html>
