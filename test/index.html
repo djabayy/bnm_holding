@@ -238,22 +238,15 @@
 }
 
 .faq-answer {
-  height: 0;
+  max-height: 0;
   overflow: hidden;
-  transition: height 0.4s ease;
-  background: #153f5a;
-  padding: 0 30px;
-  color: #c7d4df;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 15px; /* garde un padding horizontal constant */
 }
 
 .faq-answer.open {
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-
-.faq-answer p {
-  margin: 0 0 15px 0;
-  font-size: 16px;
+  max-height: 500px; /* assez grand pour contenir la réponse */
+  padding: 15px; /* padding vertical pour l’ouverture */
 }
 
   </style>
@@ -434,21 +427,45 @@
   <section id="faq" class="faq">
     <h3 style="font-size:32px;">Foire aux questions</h3>
     <div class="faq-item">
-      <button class="faq-question">Quels sont vos principaux secteurs d’activité ?</button>
+      <button class="faq-question">Comment puis-je soumettre une demande ou un projet ?</button>
       <div class="faq-answer">
-        <p>Nous intervenons dans l’immobilier, la finance, la technologie, l’automobile et le tourisme.</p>
+        <p>Vous pouvez envoyer votre demande ou projet en utilisant le formulaire de contact disponible juste en bas du site. Cliquez sur « Envoyer un message » pour accéder au formulaire et nous envoyer toutes les informations nécessaires.<br>Une réponse vous sera apportée dans les quatre semaines suivantes.</p>
       </div>
     </div>
     <div class="faq-item">
-      <button class="faq-question">Comment puis-je vous contacter ?</button>
+      <button class="faq-question">Où opère Benmoussa Holding ?</button>
       <div class="faq-answer">
-        <p>Vous pouvez utiliser le formulaire de contact ci-dessous ou nous envoyer un email directement.</p>
+        <p>Benmoussa Holding est présente partout, mais opère principalement au Maroc, en Afrique, en France, aux Pays-Bas, en Allemagne, aux États-Unis et au Canada. Nous avons également la capacité de travailler dans n’importe quel autre pays selon les opportunités et besoins.</p>
       </div>
     </div>
     <div class="faq-item">
       <button class="faq-question">Offrez-vous des opportunités d’investissement ?</button>
       <div class="faq-answer">
         <p>Oui, nous étudions les propositions d’investissement et collaborons avec des partenaires stratégiques.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Quels sont vos engagements en matière de durabilité et d’innovation ?</button>
+      <div class="faq-answer">
+        <p>Benmoussa Holding s’engage à promouvoir des projets innovants qui intègrent les principes de durabilité. Nous favorisons les initiatives respectueuses de l’environnement, socialement responsables et économiquement viables, afin de créer un impact positif à long terme dans tous les secteurs où nous investissons.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Puis-je postuler à une offre d’emploi chez Benmoussa Holding ?</button>
+      <div class="faq-answer">
+        <p>Les recrutements chez Benmoussa Holding sont gérés par des cabinets de recrutement spécialisés. Nous ne recevons pas directement les candidatures.<br>Vous pouvez toutefois utiliser le formulaire de contact en bas de la page, dans la catégorie « Recrutement », pour déposer votre candidature. Celle-ci sera directement transmise à nos cabinets de recrutement.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Est-il possible d'avoir accès aux données juridiques et légales de la Holding ?</button>
+      <div class="faq-answer">
+        <p>Notre holding fonctionne dans un cadre privé et n’est pas répertoriée dans les registres publics ou administratifs de manière publique. Nous opérons en toute conformité avec les réglementations en vigueur dans les pays où nous sommes établis.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Quels sont vos engagements en matière de durabilité et d’innovation ?</button>
+      <div class="faq-answer">
+        <p>Benmoussa Holding s’engage à promouvoir des projets innovants qui intègrent les principes de durabilité. Nous favorisons les initiatives respectueuses de l’environnement, socialement responsables et économiquement viables, afin de créer un impact positif à long terme dans tous les secteurs où nous investissons.</p>
       </div>
     </div>
   </section>
@@ -477,48 +494,20 @@
   </script>
 
   <script>
-  document.querySelectorAll('.faq-question').forEach(button => {
+document.querySelectorAll('.faq-question').forEach(button => {
   button.addEventListener('click', () => {
     const answer = button.nextElementSibling;
-    const isOpen = answer.classList.contains('open');
-
-    // Fermer toutes les réponses ouvertes (optionnel, si tu veux que ça ouvre 1 seule à la fois)
-    document.querySelectorAll('.faq-answer.open').forEach(openAnswer => {
-      if (openAnswer !== answer) {
-        openAnswer.style.height = openAnswer.scrollHeight + 'px'; // fix height avant fermeture
-        requestAnimationFrame(() => {
-          openAnswer.style.height = '0';
-        });
-        openAnswer.classList.remove('open');
-        openAnswer.previousElementSibling.classList.remove('active');
-      }
-    });
-
-    if (isOpen) {
-      // Fermer la réponse actuelle
-      answer.style.height = answer.scrollHeight + 'px';
-      requestAnimationFrame(() => {
-        answer.style.height = '0';
-      });
-      answer.classList.remove('open');
-      button.classList.remove('active');
+    if (answer.style.maxHeight) {
+      answer.style.maxHeight = null;
+      button.setAttribute('aria-expanded', 'false');
     } else {
-      // Ouvrir la réponse
-      answer.style.height = '0';
-      answer.classList.add('open');
-      button.classList.add('active');
-      const height = answer.scrollHeight;
-      answer.style.height = height + 'px';
-
-      answer.addEventListener('transitionend', function handler() {
-        if (answer.classList.contains('open')) {
-          answer.style.height = 'auto';
-        }
-        answer.removeEventListener('transitionend', handler);
-      });
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+      button.setAttribute('aria-expanded', 'true');
     }
   });
 });
+
+
   </script>
 
 </body>
